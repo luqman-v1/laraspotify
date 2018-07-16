@@ -6,6 +6,7 @@
 <body>
   <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
   <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
+  <a href="{{ route('spotify.auth') }}"><button>Sign in</button></a>
 
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
@@ -38,7 +39,7 @@
       // Connect to the player!
       player.connect();
 
-      const play = ({
+ const play = ({
   spotify_uri,
   playerInstance: {
     _options: {
@@ -48,12 +49,12 @@
   }
 }) => {
   getOAuthToken(access_token => {
-    fetch(`https://api.spotify.com/v1/me/player/play?device_id=${device_id}`, {
+    fetch(`https://api.spotify.com/v1/me/player/play?device_id=4a5e1f939fffc4dd767d488c1ff78d688ce6cb99`, {
       method: 'PUT',
       body: JSON.stringify({ uris: [spotify_uri] }),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${access_token}`
+        'Authorization': `Bearer BQCTHJ_N1HeWE0d15yY-08azg8xnMhWnBKgKY5G_VhrtI_bmB3I8TC6TZdt5NucrfcQ9p2D82Gyc7hcIseR3W2HWN45DT_XkpDb1wYezNExFLD5GoVQu4RmOl57dwv2sOCMQiCE9M2h3SvFFvULXdvzjRWm0JdMhoLaJPKmmC5zhaZ9QgjD8yA`
       },
     });
   });

@@ -22,6 +22,7 @@ class SpotifyController extends Controller
                 'client_id'     => '50d91df190244bb182531dd2a0644c51',
                 'response_type' => 'code',
                 'redirect_uri'  => route('spotify.callback'),
+                'scope'         => 'user-read-private user-read-email user-read-birthdate',
             ],
             'on_stats' => function (TransferStats $stats) use (&$url) {
                 $url = $stats->getEffectiveUri();
